@@ -1,0 +1,144 @@
+#top-nav{
+    background-color: #daac00; 
+    padding: 0 6%;
+}
+.navbar-dark .navbar-nav .nav-link{
+    color: rgb(255,255,255) !important;
+    font-weight: bold;
+    padding-left: 30px;
+   
+}
+#searchbox{
+   background-color: #fcc302;
+   border: 0px;
+   border-radius: 0px;
+   color: white;
+   left:45px;  /*---for searchbox overap on btn--*/
+   position: relative;
+   box-shadow: 5px 10px 11px 0px #00000021;
+}
+#searchbox::placeholder{
+    color: white;
+}
+#searchbtn{
+    z-index:100;
+    position: relative;
+    background-color:#00bec9;
+    color: white;
+    border: 0px;
+    border-radius: 0px;
+}
+#banner{
+    background-color: #fcc302;
+    padding-bottom: 50px;
+
+}
+#bannertext{
+    font-size: 20px;
+}
+#banner-btn-1{
+    background-color: #00bec9;
+    border-radius: 2px solid #00bec9;
+    color: white;
+}
+#banner-btn-2{
+  
+    border: 2px solid white;
+    color: white;
+    margin-left: 15px;
+}
+#service-btn{
+    background-color:#fcc302;
+    border-radius: 2px solid #00bec9;
+    color: white;
+}
+#service-text{
+    margin-top: 15px; 
+    padding: 5%;
+}
+#service-img{
+   padding:5%
+}
+#counter-section{
+    background-color:#fcc302; 
+    padding-top: 40px;
+    padding-bottom: 90px;
+   /* background-image: url(cato1.jpg);
+    background-size: cover;*/
+   
+}
+.counter-icon{
+    font-size: 50px;
+}
+/*  blog   padding for uper ower space*/
+#blog{
+    padding-bottom: 70px;
+    padding-top: 70px;
+}
+#text-title{
+    font-size: 50px;
+    font-weight: bolder;
+}
+#blog-p{
+    font-size: 15px;
+    margin-bottom:70px;
+}
+.article-detail{
+    padding:15px;
+    border: 1PX solid rgb(185,185,185);
+    border-top: 0;
+
+}
+.article-date, .article-link{
+    color: #00bec9;
+}
+
+/* Footer*/
+#footer{
+    background-color: #343434;
+    padding-top:80px;
+    padding-bottom:80px ;
+}
+#footer a{
+    text-decoration: none;
+    color: white;
+}
+#footer-form{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#footer-search-box{
+    background-color:#fcc302;
+    border: none;
+    padding: 10px;
+    position: relative;
+    left:10px;
+    width: 100%;
+    max-width: 300px;
+}
+#footer-search-submit{
+    background-color:#00bec9;
+    border: none;
+    border-radius: 0;
+    padding: 10px 20px;
+}
+.social-icon{
+    font-size: 30px;
+    padding-left: 5px;
+}
+
+/*media*/
+@media only screen and (max-width:768px){
+    #searchform{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    left:-20px;
+    position: relative;
+}
+#img1{
+    margin-left:20px;
+    width: 65;
+   
+}
+
+}
