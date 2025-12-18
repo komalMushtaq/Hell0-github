@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Companies Directory | Construction Management</title>
+    
+    <!-- CSS File -->
+    <link rel="stylesheet" href="companies.css">
+     <!--<link rel="stylesheet" href="variables.css"-->
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-building"></i>
+            <span>Plaza Construction</span>
+        </div>
+        <button class="mobile-notification" id="notificationToggle">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+        </button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <h2>Plaza Construction</h2>
+            </div>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="sidebar-user">
+            <img src="https://ui-avatars.com/api/?name=Project+Manager&background=3498db&color=fff&size=80" alt="User">
+            <div class="user-info">
+                <h4>Project Manager</h4>
+                <p>Admin</p>
+            </div>
+            <span class="user-status online"></span>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="dashboard.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="companies.html">
+                    <i class="fas fa-building"></i>
+                    <span>Companies</span>
+                    <span class="menu-badge">12</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-hard-hat"></i>
+                    <span>Projects</span>
+                    <span class="menu-badge">48</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-boxes"></i>
+                    <span>Materials</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-users"></i>
+                    <span>Labor</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="header-left">
+                <h1>
+                    <i class="fas fa-building"></i>
+                    Companies Directory
+                </h1>
+                <p>Manage all construction companies and their projects</p>
+            </div>
+            <button class="btn-add-company" id="addCompanyBtn">
+                <i class="fas fa-plus-circle"></i>
+                <span>Add Company</span>
+            </button>
+        </div>
+
+        <!-- Search & Filter Bar -->
+        <div class="action-bar">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search companies, contacts...">
+                <button class="search-clear" id="searchClear">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="filter-container">
+                <button class="filter-btn" id="filterBtn">
+                    <i class="fas fa-filter"></i>
+                    <span>Filter</span>
+                </button>
+                <button class="view-toggle" id="viewToggle">
+                    <i class="fas fa-th-large"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Filter Options (Hidden by default) -->
+        <div class="filter-options" id="filterOptions">
+            <div class="filter-group">
+                <label for="companyTypeFilter">
+                    <i class="fas fa-tag"></i> Company Type
+                </label>
+                <select id="companyTypeFilter">
+                    <option value="all">All Types</option>
+                    <option value="residential">Residential</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="plaza">Plaza</option>
+                    <option value="villa">Villa</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="statusFilter">
+                    <i class="fas fa-circle"></i> Status
+                </label>
+                <select id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="sortBy">
+                    <i class="fas fa-sort"></i> Sort By
+                </label>
+                <select id="sortBy">
+                    <option value="name">Name (A-Z)</option>
+                    <option value="recent">Most Recent</option>
+                    <option value="projects">Most Projects</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-building"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Companies</h3>
+                    <p class="stat-value">12</p>
+                    <p class="stat-change">
+                        <i class="fas fa-arrow-up"></i>
+                        +2 this month
+                    </p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Active</h3>
+                    <p class="stat-value">9</p>
+                    <p class="stat-change">85% active rate</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Projects</h3>
+                    <p class="stat-value">48</p>
+                    <p class="stat-change">Across all companies</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Revenue</h3>
+                    <p class="stat-value">$12.5M</p>
+                    <p class="stat-change">
+                        <i class="fas fa-arrow-up"></i>
+                        +15% growth
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Companies Container -->
+        <div class="companies-grid" id="companiesGrid">
+            <!-- Company cards will be loaded by JavaScript -->
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-state" id="loadingState">
+            <div class="loading-spinner"></div>
+            <p>Loading companies...</p>
+        </div>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <i class="fas fa-building"></i>
+            <h3>No Companies Found</h3>
+            <p>Try adjusting your search or filters</p>
+            <button class="btn-add-company" id="addFirstCompany">
+                <i class="fas fa-plus"></i> Add Your First Company
+            </button>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="chart-section">
+            <div class="chart-header">
+                <h3><i class="fas fa-chart-pie"></i> Company Distribution</h3>
+                <div class="chart-actions">
+                    <button class="chart-action-btn">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="chart-action-btn">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="distributionChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+            <div class="action-buttons">
+                <button class="action-btn">
+                    <i class="fas fa-file-export"></i>
+                    <span>Export Data</span>
+                </button>
+                <button class="action-btn">
+                    <i class="fas fa-print"></i>
+                    <span>Print Report</span>
+                </button>
+                <button class="action-btn">
+                    <i class="fas fa-envelope"></i>
+                    <span>Send Email</span>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Company Modal -->
+    <div class="modal" id="addCompanyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus-circle"></i> Add New Company</h2>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <form id="companyForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="companyName">
+                                <i class="fas fa-building"></i> Company Name
+                            </label>
+                            <input type="text" id="companyName" placeholder="Enter company name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="companyType">
+                                <i class="fas fa-tag"></i> Company Type
+                            </label>
+                            <select id="companyType" required>
+                                <option value="">Select type</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="plaza">Plaza</option>
+                                <option value="villa">Villa</option>
+                                <option value="shop">Shop & Retail</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactName">
+                                <i class="fas fa-user"></i> Contact Person
+                            </label>
+                            <input type="text" id="contactName" placeholder="Contact name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactEmail">
+                                <i class="fas fa-envelope"></i> Email
+                            </label>
+                            <input type="email" id="contactEmail" placeholder="email@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contactPhone">
+                                <i class="fas fa-phone"></i> Phone
+                            </label>
+                            <input type="tel" id="contactPhone" placeholder="+1234567890">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="companyStatus">
+                                <i class="fas fa-circle"></i> Status
+                            </label>
+                            <select id="companyStatus">
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="pending">Pending</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="companyAddress">
+                                <i class="fas fa-map-marker-alt"></i> Address
+                            </label>
+                            <textarea id="companyAddress" placeholder="Full company address" rows="2"></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="companyDescription">
+                                <i class="fas fa-file-alt"></i> Description
+                            </label>
+                            <textarea id="companyDescription" placeholder="Brief description about the company" rows="3"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Save Company
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="companies.html" class="nav-item active">
+            <i class="fas fa-building"></i>
+            <span>Companies</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+            <span>Add</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-chart-bar"></i>
+            <span>Reports</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <!-- JavaScript File -->
+    <script src="companies.js"></script>
+    
+     
+</body>
+</html>
