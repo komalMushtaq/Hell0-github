@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Materials Management | Construction Management</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="variables.css">
+    <link rel="stylesheet" href="materials.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-logo">
+            <i class="fas fa-building"></i>
+            <span>Plaza Construction</span>
+        </div>
+        <button class="mobile-notification" id="notificationToggle">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">3</span>
+        </button>
+    </header>
+
+    <!-- Sidebar - Your existing code -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-building"></i>
+                <h2>Plaza Construction</h2>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="companies.html">
+                    <i class="fas fa-building"></i>
+                    <span>Companies</span>
+                    <span class="badge">12</span>
+                </a>
+            </li>
+            <li>
+                <a href="projects.html">
+                    <i class="fas fa-project-diagram"></i>
+                    <span>Projects</span>
+                    <span class="badge">5</span>
+                </a>
+            </li>
+            <!--<li class="active">
+                <a href="materials.html">-->
+                    <a href="materials.html">
+                    <i class="fas fa-boxes"></i>
+                    <span>Materials</span>
+                    <span class="badge warning">24</span>
+                </a>
+            </li>
+            <li>
+                <a href="labor.html">
+                    <i class="fas fa-users"></i>
+                    <span>Labor</span>
+                    <span class="badge warning">5</span>
+                </a>
+            </li>
+            <li>
+                <a href="reports.html">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+            </li>
+            <li>
+                <a href="cost-analysis.html">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Cost Analysis</span>
+                </a>
+            </li>
+            <li>
+                <a href="schedule.html">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Schedule</span>
+                </a>
+            </li>
+            <li>
+                <a href="equipment.html">
+                    <i class="fas fa-tools"></i>
+                    <span>Equipment</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <img src="https://ui-avatars.com/api/?name=Project+Manager&background=3498db&color=fff" alt="User">
+                <div>
+                    <h4>Project Manager</h4>
+                    <p>Admin</p>
+                </div>
+            </div>
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Area - Full Width -->
+    <main class="main-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="header-left">
+                <h1><i class="fas fa-boxes"></i> Materials Management</h1>
+                <p>Track and manage all construction materials across projects</p>
+            </div>
+            <div class="header-actions">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="materialSearch" placeholder="Search materials...">
+                </div>
+                <button class="btn btn-primary" id="addMaterialBtn">
+                    <i class="fas fa-plus"></i> Add New Material
+                </button>
+                <button class="btn btn-secondary" id="importBtn">
+                    <i class="fas fa-upload"></i> Import
+                </button>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-cards">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-cubes"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>156</h3>
+                    <p>Total Materials</p>
+                </div>
+                <span class="stat-trend positive">+12%</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>18</h3>
+                    <p>Low Stock</p>
+                </div>
+                <span class="stat-trend negative">-5%</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>7</h3>
+                    <p>Pending Orders</p>
+                </div>
+                <span class="stat-trend positive">+3%</span>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>₹4.2M</h3>
+                    <p>Inventory Value</p>
+                </div>
+                <span class="stat-trend positive">+8%</span>
+            </div>
+        </div>
+
+        <!-- Filters Bar -->
+        <div class="filters-bar">
+            <div class="filter-group">
+                <label for="categoryFilter"><i class="fas fa-filter"></i> Category</label>
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="structural">Structural</option>
+                    <option value="finishing">Finishing</option>
+                    <option value="electrical">Electrical</option>
+                    <option value="plumbing">Plumbing</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="statusFilter"><i class="fas fa-box"></i> Stock Status</label>
+                <select id="statusFilter">
+                    <option value="all">All Status</option>
+                    <option value="in-stock">In Stock</option>
+                    <option value="low-stock">Low Stock</option>
+                    <option value="out-of-stock">Out of Stock</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="projectFilter"><i class="fas fa-project-diagram"></i> Project</label>
+                <select id="projectFilter">
+                    <option value="all">All Projects</option>
+                    <option value="tower-a">Tower A</option>
+                    <option value="tower-b">Tower B</option>
+                    <option value="parking">Parking Complex</option>
+                    <option value="clubhouse">Clubhouse</option>
+                </select>
+            </div>
+
+            
+            <button class="btn btn-outline" id="clearFilters">
+                <i class="fas fa-times"></i> Clear Filters
+            </button>
+        </div>
+
+        <!-- Materials Table -->
+        <div class="materials-table-container">
+            <div class="table-header">
+                <h3><i class="fas fa-list"></i> Materials List</h3>
+                <div class="table-actions">
+                    <button class="btn-icon" id="exportBtn" title="Export">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="btn-icon" id="refreshBtn" title="Refresh">
+                        <i class="fas fa-sync"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="materials-table">
+                    <thead>
+                        <tr>
+                            <th>Material ID</th>
+                            <th>Material Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>Projects Using</th>
+                            <th>Status</th>
+                            <th>Last Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="materialsTableBody">
+                        <!-- Materials will be loaded by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-footer">
+                <div class="pagination-info">
+                    Showing <span id="startItem">1</span>-<span id="endItem">10</span> of <span id="totalItems">156</span> materials
+                </div>
+                <div class="pagination-controls">
+                    <button class="btn-pagination" id="prevPage" disabled>
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <span class="page-numbers">
+                        <span class="page-active">1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>...</span>
+                        <span>16</span>
+                    </span>
+                    <button class="btn-pagination" id="nextPage">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Usage Section -->
+        <div class="projects-usage-section">
+            <h3><i class="fas fa-project-diagram"></i> Material Usage Across Projects</h3>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project cards will be loaded by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Add/Edit Material Modal -->
+        <div class="modal" id="materialModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle"><i class="fas fa-plus-circle"></i> Add New Material</h2>
+                    <button class="close-modal" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="materialForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="materialName">Material Name *</label>
+                                <input type="text" id="materialName" required placeholder="e.g., Portland Cement 53 Grade">
+                            </div>
+                            <div class="form-group">
+                                <label for="materialCode">Material Code</label>
+                                <input type="text" id="materialCode" placeholder="Auto-generated">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="materialCategory">Category *</label>
+                                <select id="materialCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="structural">Structural</option>
+                                    <option value="finishing">Finishing</option>
+                                    <option value="electrical">Electrical</option>
+                                    <option value="plumbing">Plumbing</option>
+                                    <option value="safety">Safety Equipment</option>
+                                    <option value="tools">Tools</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="materialUnit">Unit *</label>
+                                <select id="materialUnit" required>
+                                    <option value="">Select Unit</option>
+                                    <option value="kg">Kilogram (kg)</option>
+                                    <option value="bag">Bag</option>
+                                    <option value="ton">Ton</option>
+                                    <option value="piece">Piece</option>
+                                    <option value="meter">Meter</option>
+                                    <option value="liter">Liter</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="quantity">Quantity *</label>
+                                <input type="number" id="quantity" required min="0" step="0.01" placeholder="0.00">
+                            </div>
+                            <div class="form-group">
+                                <label for="minQuantity">Minimum Stock Level *</label>
+                                <input type="number" id="minQuantity" required min="0" step="0.01" placeholder="0.00">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="unitCost">Unit Cost (₹) *</label>
+                                <input type="number" id="unitCost" required min="0" step="0.01" placeholder="0.00">
+                            </div>
+                            <div class="form-group">
+                                <label for="supplier">Primary Supplier</label>
+                                <input type="text" id="supplier" placeholder="Supplier name">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="projects">Used in Projects (Select multiple)</label>
+                            <div class="projects-checkbox">
+                                <label><input type="checkbox" name="project" value="tower-a"> Tower A</label>
+                                <label><input type="checkbox" name="project" value="tower-b"> Tower B</label>
+                                <label><input type="checkbox" name="project" value="parking"> Parking Complex</label>
+                                <label><input type="checkbox" name="project" value="clubhouse"> Clubhouse</label>
+                                <label><input type="checkbox" name="project" value="landscaping"> Landscaping</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="usageDescription">How to Use / Application</label>
+                            <textarea id="usageDescription" rows="3" placeholder="Describe how this material is used, mixing ratios, application methods, safety precautions..."></textarea>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="specifications">Technical Specifications</label>
+                            <textarea id="specifications" rows="2" placeholder="Technical specs, standards, grade, size..."></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="saveBtn">Save Material</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript Files -->
+    <script src="materials.js"></script>
+    <script>
+        // Initialize mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const sidebar = document.querySelector('.sidebar');
+            
+            if (mobileMenuToggle && sidebar) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                });
+            }
+            
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', function(event) {
+                if (window.innerWidth <= 768) {
+                    if (!sidebar.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

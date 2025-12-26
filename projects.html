@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Company Projects| Construction Management</title>
+    
+    <!-- CSS File -->
+    <link rel="stylesheet" href="projects.css">
+    <link rel="stylesheet" href="variables.css">
+   
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <a href="companies.html" class="mobile-back">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <div class="mobile-title">
+            <h2>Company Profile</h2>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <i class="fas fa-ellipsis-v"></i>
+        </button>
+    </header>
+
+    <!-- Sidebar -->
+<nav class="sidebar">
+    <div class="sidebar-header">
+        <div class="logo">
+            <i class="fas fa-building"></i>
+            <h2>Plaza Construction</h2>
+        </div>
+        <button class="sidebar-toggle" id="sidebarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li class="active">
+            <a href="index.html">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+             <a href="companies.html">
+                    <i class="fas fa-building"></i>
+                    <span>Companies</span>
+                    <span class="badge">12</span>
+                </a>
+            </li>
+
+        <li>
+            <a href="projects.html">
+                <i class="fas fa-project-diagram"></i>
+                <span>Projects</span>
+                <span class="badge">5</span>
+            </a>
+        </li>
+        <li>
+            <a href="materials.html">
+                <i class="fas fa-boxes"></i>
+                <span>Materials</span>
+                <span class="badge warning">24</span>
+            </a>
+        </li>
+        <li>
+            <a href="labor.html">
+                <i class="fas fa-users"></i>
+                <span>Labor</span>
+                <span class="badge warning">5</span>
+            </a>
+        </li>
+        <li>
+            <a href="reports.html">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+            </a>
+        </li>
+        <li>
+            <a href="cost-analysis.html">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Cost Analysis</span>
+            </a>
+        </li>
+        <li>
+            <a href="schedule.html">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Schedule</span>
+            </a>
+        </li>
+        <li>
+            <a href="equipment.html">
+                <i class="fas fa-tools"></i>
+                <span>Equipment</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="sidebar-footer">
+        <div class="user-profile">
+            <img src="https://ui-avatars.com/api/?name=Project+Manager&background=3498db&color=fff" alt="User">
+            <div>
+                <h4>Project Manager</h4>
+                <p>Admin</p>
+            </div>
+        </div>
+        <button class="logout-btn" id="logoutBtn">
+            <i class="fas fa-sign-out-alt"></i>
+        </button>
+    </div>
+</nav>
+
+    <!-- Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb">
+            <a href="companies.html"><i class="fas fa-building"></i> Companies</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="companyNameBreadcrumb">Company Profile</span>
+        </nav>
+
+        <!-- Company Header -->
+        <div class="company-header-section">
+            <div class="company-header-content">
+                <div class="company-logo-large">
+                    <div class="logo-placeholder" id="companyLogo">SL</div>
+                    <button class="logo-edit">
+                        <i class="fas fa-camera"></i>
+                    </button>
+                </div>
+                <div class="company-info-header">
+                    <h1 id="companyTitle">Skyline Builders</h1>
+                    <div class="company-meta">
+                        <span class="company-type-badge" id="companyTypeBadge">Residential Construction</span>
+                        <span class="company-status" id="companyStatus">
+                            <i class="fas fa-circle"></i> Active
+                        </span>
+                        <span class="company-id">ID: #001</span>
+                    </div>
+                    <p class="company-description" id="companyDescription">
+                        Specialized in luxury residential buildings and high-end construction projects.
+                    </p>
+                </div>
+                <div class="company-actions-header">
+                    <button class="btn-action-header" id="editCompanyBtn">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn-action-header btn-danger" id="deleteCompanyBtn">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                    <button class="btn-action-header btn-primary" id="addProjectBtn">
+                        <i class="fas fa-plus"></i> Add Project
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Stats -->
+        <div class="company-stats">
+            <div class="stat-card-company">
+                <div class="stat-icon-company">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <div class="stat-content-company">
+                    <h3>Active Projects</h3>
+                    <p class="stat-value-company" id="activeProjects">8</p>
+                </div>
+            </div>
+            
+            <div class="stat-card-company">
+                <div class="stat-icon-company">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-content-company">
+                    <h3>Total Revenue</h3>
+                    <p class="stat-value-company" id="totalRevenue">$2.5M</p>
+                </div>
+            </div>
+            
+            <div class="stat-card-company">
+                <div class="stat-icon-company">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="stat-content-company">
+                    <h3>Established</h3>
+                    <p class="stat-value-company" id="establishedYear">2018</p>
+                </div>
+            </div>
+            
+            <div class="stat-card-company">
+                <div class="stat-icon-company">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="stat-content-company">
+                    <h3>Completion Rate</h3>
+                    <p class="stat-value-company" id="completionRate">92%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column-layout">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Company Details Card -->
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <h3><i class="fas fa-info-circle"></i> Company Details</h3>
+                        <button class="detail-card-action">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                    <div class="detail-card-body">
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-user"></i> Contact Person
+                            </div>
+                            <div class="detail-value" id="contactPerson">John Smith</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-envelope"></i> Email
+                            </div>
+                            <div class="detail-value" id="contactEmail">john@skylinebuilders.com</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-phone"></i> Phone
+                            </div>
+                            <div class="detail-value" id="contactPhone">+1 (234) 567-8900</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-map-marker-alt"></i> Address
+                            </div>
+                            <div class="detail-value" id="companyAddress">
+                                123 Construction Street, New York, NY 10001, United States
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-globe"></i> Website
+                            </div>
+                            <div class="detail-value" id="companyWebsite">
+                                <a href="#" target="_blank">www.skylinebuilders.com</a>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">
+                                <i class="fas fa-users"></i> Team Size
+                            </div>
+                            <div class="detail-value" id="teamSize">45 Employees</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="detail-card">
+                    <div class="detail-card-header">
+                        <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        <button class="detail-card-action">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    <div class="detail-card-body">
+                        <div class="activity-timeline" id="activityTimeline">
+                            <!-- Activity items will be loaded by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Projects Section -->
+                <div class="projects-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-hard-hat"></i> Company Projects</h3>
+                        <div class="section-actions">
+                            <button class="btn-view-all" id="viewAllProjects">
+                                View All
+                            </button>
+                            <div class="view-options">
+                                <button class="view-option active" data-view="grid">
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button class="view-option" data-view="list">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projects Filter -->
+                    <div class="projects-filter">
+                        <input type="text" id="projectSearch" placeholder="Search projects...">
+                        <select id="projectStatusFilter">
+                            <option value="all">All Status</option>
+                            <option value="planning">Planning</option>
+                            <option value="active">Active</option>
+                            <option value="on-hold">On Hold</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                        <select id="projectTypeFilter">
+                            <option value="all">All Types</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="plaza">Plaza</option>
+                            <option value="villa">Villa</option>
+                        </select>
+                    </div>
+
+                    <!-- Projects Grid -->
+                    <div class="projects-grid" id="projectsGrid">
+                        <!-- Project cards will be loaded by JS -->
+                    </div>
+
+                    <!-- No Projects State -->
+                    <div class="no-projects" id="noProjects" style="display: none;">
+                        <i class="fas fa-hard-hat"></i>
+                        <h4>No Projects Yet</h4>
+                        <p>This company doesn't have any projects yet.</p>
+                        <button class="btn-add-project" id="addFirstProject">
+                            <i class="fas fa-plus"></i> Add First Project
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Performance Chart -->
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-line"></i> Project Performance</h3>
+                        <select id="chartTimeRange">
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="performanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Members Section -->
+        <div class="team-section">
+            <div class="section-header">
+                <h3><i class="fas fa-users"></i> Key Contacts</h3>
+                <button class="btn-add-contact">
+                    <i class="fas fa-user-plus"></i> Add Contact
+                </button>
+            </div>
+            <div class="team-grid" id="teamGrid">
+                <!-- Team members will be loaded by JS -->
+            </div>
+        </div>
+    </main>
+
+<!-------end of code-->
+
+
+    <!-- Mobile Bottom Navigation 
+    <nav class="mobile-bottom-nav">
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="companies.html" class="nav-item">
+            <i class="fas fa-building"></i>
+            <span>Companies</span>
+        </a>
+        <a href="#" class="nav-item active">
+            <i class="fas fa-hard-hat"></i>
+            <span>Projects</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-chart-bar"></i>
+            <span>Reports</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>-->
+
+    <!-- Add Project Modal 
+    <div class="modal" id="addProjectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-plus-circle"></i> Add New Project</h2>
+                <button class="modal-close" id="projectModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="projectForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="projectName">
+                                <i class="fas fa-hard-hat"></i> Project Name
+                            </label>
+                            <input type="text" id="projectName" placeholder="Enter project name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="projectType">
+                                <i class="fas fa-tag"></i> Project Type
+                            </label>
+                            <select id="projectType" required>
+                                <option value="">Select type</option>
+                                <option value="residential">Residential</option>
+                                <option value="commercial">Commercial</option>
+                                <option value="plaza">Plaza</option>
+                                <option value="villa">Villa</option>
+                                <option value="shop">Shop & Retail</option>
+                                <option value="mixed">Mixed Development</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="projectLocation">
+                                <i class="fas fa-map-marker-alt"></i> Location
+                            </label>
+                            <input type="text" id="projectLocation" placeholder="Project location" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="projectStatus">
+                                <i class="fas fa-circle"></i> Status
+                            </label>
+                            <select id="projectStatus">
+                                <option value="planning">Planning</option>
+                                <option value="active">Active</option>
+                                <option value="on-hold">On Hold</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="projectBudget">
+                                <i class="fas fa-money-bill-wave"></i> Budget
+                            </label>
+                            <input type="number" id="projectBudget" placeholder="Enter budget amount" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="projectDuration">
+                                <i class="fas fa-calendar-alt"></i> Duration (Months)
+                            </label>
+                            <input type="number" id="projectDuration" placeholder="Number of months" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="projectDescription">
+                                <i class="fas fa-file-alt"></i> Description
+                            </label>
+                            <textarea id="projectDescription" placeholder="Project description" rows="3"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelProjectBtn">Cancel</button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Create Project
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>-->
+
+    <!-- JavaScript File -->
+    <script src="projects.js"></script>
+</body>
+</html>
